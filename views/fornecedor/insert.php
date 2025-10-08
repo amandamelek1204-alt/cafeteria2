@@ -2,7 +2,7 @@
     require "../../autoload.php";
 
     // Construir o objeto do Fornecedor
-    $fornecedor = new Fornecedor();
+    $fornecedor = new Forecedor();
     $fornecedor->setCnpj($_POST['cnpj']);
     $fornecedor->setRazaoSocial($_POST['razao_social']);
     $fornecedor->setEmail($_POST['email']);

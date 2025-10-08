@@ -1,17 +1,19 @@
 <?php
-    class Categoria {
+    class Formapagamento {
         // Atributos
        
-        private $idcategoria;
-        private $descricao;
        
+        private $idPagamento;
+        private $descricao;
+
+
         // Métodos
-        public function getIdCategoria() {
-            return $this->idcategoria;
+        public function getIdPagamento() {
+            return $this->idpagamento;
         }
 
-        public function setIdCategoria($idcategoria) {
-            $this->idcategoria = $idcategoria;
+        public function setIdPagamento($idPagamento) {
+            $this->idpagamento = $idpagamento;
         }
 
         public function getDescricao() {
@@ -22,10 +24,11 @@
             $this->descricao = $descricao;
         }
 
-      
+       
+        
 
         // Método para retornar uma string do objeto
         public function __toString() {
-            return $this->razaoSocial;
+            return $this->descricao;
         }
     }

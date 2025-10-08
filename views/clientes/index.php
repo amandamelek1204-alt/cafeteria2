@@ -1,3 +1,9 @@
+<?php
+    require "../../autoload.php";
+
+    $dao = new ClienteDAO();
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 
@@ -9,10 +15,11 @@
     <meta name="generator" content="Astro v5.9.2">
     <title>Dashboard Template · Bootstrap v5.3</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-    <script src="js/color-modes.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../js/color-modes.js"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <meta name="theme-color" content="#712cf9">
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -252,159 +259,44 @@
     </header>
     <div class="container-fluid">
         <div class="row">
-            <?php include "sidebar.html" ?>
+            <?php include "../../sidebar.html" ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group me-2"> <button type="button"
-                                class="btn btn-sm btn-outline-secondary">Share</button> <button type="button"
-                                class="btn btn-sm btn-outline-secondary">Export</button> </div> <button type="button"
-                            class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                            <svg class="bi" aria-hidden="true">
-                                <use xlink:href="#calendar3"></use>
-                            </svg>
-                            This week
-                        </button>
-                    </div>
-                </div> <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-                <h2>Section title</h2>
-                <div class="table-responsive small">
-                    <table class="table table-striped table-sm">
-                        <thead>
+                <div class="my-4">
+                    <h2>Clientes</h2>
+                    <a href="create.php">Novo Cliente</a>
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Ações</th>
+                        </tr>
+                        <?php foreach($dao->read() as $cliente) : ?>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Header</th>
-                                <th scope="col">Header</th>
-                                <th scope="col">Header</th>
-                                <th scope="col">Header</th>
+                            
+                                <td><?= $cliente->getIdClientes() ?></td>
+                                <td><?= $cliente->getNome() ?></td>
+                                <td><?= $cliente->getTelefone() ?></td>
+                                <td>
+                                    <a href="edit.php?id=<?= $cliente->getIdClientes() ?>" title="Editar">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a class="link link-danger" href="destroy.php?id=<?= $cliente->getIdClientes() ?>" title="Excluir">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1,001</td>
-                                <td>random</td>
-                                <td>data</td>
-                                <td>placeholder</td>
-                                <td>text</td>
-                            </tr>
-                            <tr>
-                                <td>1,002</td>
-                                <td>placeholder</td>
-                                <td>irrelevant</td>
-                                <td>visual</td>
-                                <td>layout</td>
-                            </tr>
-                            <tr>
-                                <td>1,003</td>
-                                <td>data</td>
-                                <td>rich</td>
-                                <td>dashboard</td>
-                                <td>tabular</td>
-                            </tr>
-                            <tr>
-                                <td>1,003</td>
-                                <td>information</td>
-                                <td>placeholder</td>
-                                <td>illustrative</td>
-                                <td>data</td>
-                            </tr>
-                            <tr>
-                                <td>1,004</td>
-                                <td>text</td>
-                                <td>random</td>
-                                <td>layout</td>
-                                <td>dashboard</td>
-                            </tr>
-                            <tr>
-                                <td>1,005</td>
-                                <td>dashboard</td>
-                                <td>irrelevant</td>
-                                <td>text</td>
-                                <td>placeholder</td>
-                            </tr>
-                            <tr>
-                                <td>1,006</td>
-                                <td>dashboard</td>
-                                <td>illustrative</td>
-                                <td>rich</td>
-                                <td>data</td>
-                            </tr>
-                            <tr>
-                                <td>1,007</td>
-                                <td>placeholder</td>
-                                <td>tabular</td>
-                                <td>information</td>
-                                <td>irrelevant</td>
-                            </tr>
-                            <tr>
-                                <td>1,008</td>
-                                <td>random</td>
-                                <td>data</td>
-                                <td>placeholder</td>
-                                <td>text</td>
-                            </tr>
-                            <tr>
-                                <td>1,009</td>
-                                <td>placeholder</td>
-                                <td>irrelevant</td>
-                                <td>visual</td>
-                                <td>layout</td>
-                            </tr>
-                            <tr>
-                                <td>1,010</td>
-                                <td>data</td>
-                                <td>rich</td>
-                                <td>dashboard</td>
-                                <td>tabular</td>
-                            </tr>
-                            <tr>
-                                <td>1,011</td>
-                                <td>information</td>
-                                <td>placeholder</td>
-                                <td>illustrative</td>
-                                <td>data</td>
-                            </tr>
-                            <tr>
-                                <td>1,012</td>
-                                <td>text</td>
-                                <td>placeholder</td>
-                                <td>layout</td>
-                                <td>dashboard</td>
-                            </tr>
-                            <tr>
-                                <td>1,013</td>
-                                <td>dashboard</td>
-                                <td>irrelevant</td>
-                                <td>text</td>
-                                <td>visual</td>
-                            </tr>
-                            <tr>
-                                <td>1,014</td>
-                                <td>dashboard</td>
-                                <td>illustrative</td>
-                                <td>rich</td>
-                                <td>data</td>
-                            </tr>
-                            <tr>
-                                <td>1,015</td>
-                                <td>random</td>
-                                <td>tabular</td>
-                                <td>information</td>
-                                <td>text</td>
-                            </tr>
-                        </tbody>
+                        <?php endforeach ?>
                     </table>
                 </div>
             </main>
         </div>
     </div>
-    <script src="js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
+    <script src="../../js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
         integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"
         class="astro-vvvwv3sm"></script>
-    <script src="js/dashboard.js" class="astro-vvvwv3sm"></script>
+    <script src="../../js/dashboard.js" class="astro-vvvwv3sm"></script>
 </body>
 
 </html>
