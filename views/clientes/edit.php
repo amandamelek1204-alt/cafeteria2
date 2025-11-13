@@ -271,7 +271,7 @@
                         </p>
                         <p class="form-group">
                             <label for="cnpj">Nome</label>
-                            <input type="text" name="nome" class="form-control" value="<?= $cliente->grtNome() ?>">
+                            <input type="text" name="nome" class="form-control" value="<?= $cliente->getNome() ?>">
                         </p>
                        
                         <p class="form-group">
