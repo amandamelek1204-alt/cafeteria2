@@ -2,8 +2,8 @@
     require "../../autoload.php";
 
     // Construir o objeto do Cliente
-    $cliente = new cliente();
-    $cliente->setIdCliente($_POST['idclientes']);
+    $cliente = new Clientes();
+    $cliente->setIdClientes($_POST['idclientes']);
     $cliente->setNome($_POST['nome']);
     $cliente->setTelefone($_POST['telefone']);
 
