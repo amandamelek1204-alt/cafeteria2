@@ -87,8 +87,8 @@
         public function destroy($id) {
             try {
                 $query = BD::getConexao()->prepare(
-                    "DELETE FROM cliente 
-                     WHERE id_cliente = :i"
+                    "DELETE FROM clientes 
+                     WHERE id_clientes = :i"
                 );
                 $query->bindValue(':i',$id, PDO::PARAM_INT);
 
