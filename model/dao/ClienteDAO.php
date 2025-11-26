@@ -45,16 +45,16 @@
 
         public function find($id) {
             try {
-                $query = BD::getConexao()->prepare("SELECT * FROM cliente WHERE id_cliente = :i");
+                $query = BD::getConexao()->prepare("SELECT * FROM clientes WHERE id_clientes = :i");
                 $query->bindValue(':i',$id, PDO::PARAM_INT);
 
                 if(!$query->execute())
                     print_r($query->errorInfo());
 
                 $linha = $query->fetch(PDO::FETCH_ASSOC);
-                $cliente = new cliente();
-                $cliente->setId($linha['id_cliente']);
-                $cliente->setCnpj($linha['nome']);
+                $cliente = new clientes();
+                $cliente->setIdClientes($linha['id_clientes']);
+                $cliente->setNome($linha['nome']);
                 $cliente->setTelefone($linha['telefone']);
 
                 return $cliente;
@@ -67,12 +67,12 @@
         public function update($cliente) {
             try {
                 $query = BD::getConexao()->prepare(
-                    "UPDATE cliente 
-                     SET idcliente = :c , nome = :n, telefone = :t 
-                     WHERE id_cliente = :i"
+                    "UPDATE clientes
+                     SET nome = :n, telefone = :t 
+                     WHERE id_clientes = :c"
                 );
-                $query->bindValue(':c',$cliente->getidCliente(), PDO::PARAM_STR);
-                $query->bindValue(':r',$cliente->getNome(), PDO::PARAM_STR);
+                $query->bindValue(':c',$cliente->getidClientes(), PDO::PARAM_INT);
+                $query->bindValue(':n',$cliente->getNome(), PDO::PARAM_STR);
                 $query->bindValue(':t',$cliente->getTelefone(), PDO::PARAM_STR);
                
 

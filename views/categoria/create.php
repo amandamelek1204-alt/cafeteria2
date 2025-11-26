@@ -1,11 +1,3 @@
-<?php
-    // Buscar as informações do fornecedor para atualizar
-    require "../../autoload.php";
-
-    $dao = new ClienteDAO();
-    $cliente = $dao->find($_GET['id']);
-?>
-
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 
@@ -263,19 +255,18 @@
             <?php include "../../sidebar.html" ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="my-4">
-                    <h2>Editar Clientes</h2>
-                    <form action="update.php" method="post">
+                    <h2>Cadastrar Cliente</h2>
+                    <form action="insert.php" method="post">
+                   
                         <p class="form-group">
                             <label for="nome">Nome</label>
-                            <input type="text" name="nome" class="form-control" value="<?= $cliente->getNome() ?>">
+                            <input type="text" name="nome" class="form-control">
 
                         </p>
-                       
                         <p class="form-group">
                             <label for="telefone">Telefone</label>
-                            <input type="text" name="telefone" class="form-control" value="<?= $cliente->getTelefone() ?>">
+                            <input type="text" name="telefone" class="form-control">
                         </p>
-                        <input type="hidden" name="id" value="<?= $cliente->getIdClientes() ?>">
                         <p class="form-group">
                             <input type="reset" value="Limpar" class="btn btn-default">
                             <input type="submit" value="Salvar" class="btn btn-primary">
