@@ -1,7 +1,7 @@
 <?php
     require "../../autoload.php";
 
-    $dao = new ClienteDAO();
+    $dao = new CategoriaDAO();
 ?>
 
 <!DOCTYPE html>
@@ -262,26 +262,25 @@
             <?php include "../../sidebar.html" ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="my-4">
-                    <h2>Clientes</h2>
-                    <a href="create.php">Novo Cliente</a>
+                    <h2>Categoria</h2>
+                    <a href="create.php">Categoria</a>
                     <table class="table table-hover">
                         <tr>
                             <th>ID</th>
-                            <th>Nome</th>
-                            <th>Telefone</th>
-                            <th>Ações</th>
+                            <th>Descricao</th>
+                           
                         </tr>
-                        <?php foreach($dao->read() as $cliente) : ?>
+                        <?php foreach($dao->read() as $categoria) : ?>
                             <tr>
                             
-                                <td><?= $cliente->getIdClientes() ?></td>
-                                <td><?= $cliente->getNome() ?></td>
-                                <td><?= $cliente->getTelefone() ?></td>
+                                <td><?= $categoria->getId_Categoria() ?></td>
+                                <td><?= $categoria->getDescricao() ?></td>
+                               
                                 <td>
-                                    <a href="edit.php?id=<?= $cliente->getIdClientes() ?>" title="Editar">
+                                    <a href="edit.php?id=<?= $categoria->getId_Categoria() ?>" title="Editar">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <a class="link link-danger" href="destroy.php?id=<?= $cliente->getIdClientes() ?>" title="Excluir">
+                                    <a class="link link-danger" href="destroy.php?id=<?= $categoria->getId_Categoria() ?>" title="Excluir">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </td>
